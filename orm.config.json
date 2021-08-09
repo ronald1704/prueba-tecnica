@@ -1,0 +1,14 @@
+{
+  "ssl": false,
+  "type": "mysql",
+  "host": "localhost",
+  "username": "root",
+  "database": "tallervehiculos",
+  "password": "",
+  "port": 3307,
+  "entities": ["src/**/**/*.entity{.ts,.js}"],
+  "migrations": ["src/database/migrations/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/database/migrations"
+  }
+}

@@ -17,7 +17,7 @@ export class AuthRepository extends Repository<Usuario>{
         usuario.correo = correo;
 
         const rolRepository: RolRepository = await getConnection().getRepository(Rol);
-        const defeaultRol: Rol = await rolRepository.findOne({ where: { name: RoleType.MECANICO } });
+        const defeaultRol: Rol = await rolRepository.findOne({ where: { rol: RoleType.MECANICO } });
         usuario.roles = [defeaultRol];
 
         const salt = await genSalt(10);

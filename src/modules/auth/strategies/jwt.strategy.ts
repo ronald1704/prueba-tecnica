@@ -1,8 +1,7 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { PassportStrategy } from "@nestjs/passport";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Strategy } from "passport";
-import { ExtractJwt } from "passport-jwt";
+import { ExtractJwt, Strategy } from "passport-jwt";
 import { Status } from "../../../../shared/entity.status.enum";
 import { Configuration } from "../../../config/config.keys";
 import { ConfigService } from "../../../config/config.service";

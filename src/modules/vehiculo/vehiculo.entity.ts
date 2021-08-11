@@ -5,14 +5,14 @@ export class Vehiculo extends BaseEntity {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
-    @Column({ type: "varchar", unique: true, length: 15, nullable: false })
+    @Column({ type: "varchar", length: 15, nullable: false })
     placa: string;
 
     @Column({ type: "varchar", length: 50, nullable: false, })
     marca: string;
 
-    @Column({ type: "int", nullable: false, })
-    modelo: number;
+    @Column({ type: "varchar", length: 4, nullable: false, })
+    modelo: string;
 
     @Column({ type: "varchar", length: 50, nullable: false, })
     color: string;
@@ -22,6 +22,9 @@ export class Vehiculo extends BaseEntity {
 
     @Column({ type: "varchar", length: 200, nullable: false, })
     imagen: string;
+
+    @Column({ type: "varchar", length: 8, default: "ACTIVO" })
+    status: string;
 
     @Column({ type: "float", nullable: false, })
     valor: number;

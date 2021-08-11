@@ -47,6 +47,10 @@ export class UsuarioService {
         }
 
         foundUsuario.nombre = usuario.nombre;
+        foundUsuario.apellido = usuario.apellido;
+        foundUsuario.telefono = usuario.telefono;
+        foundUsuario.correo = usuario.correo;
+
         const updateUsuario = await this._usuarioRepository.save(foundUsuario);
         return plainToClass(ReadUseruarioDto, updateUsuario);
     }

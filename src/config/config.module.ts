@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from './config.service';
 
 @Module({
-    providers: [{
+    providers: [/*{
         provide: ConfigService,
         useValue: new ConfigService(),
-    }],
+    }*/ConfigService],
     exports: [ConfigService]
 })
 export class ConfigModule { }

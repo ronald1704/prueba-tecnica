@@ -12,7 +12,4 @@ export class UpdateUsuarioDto {
 
     @IsEmail()
     readonly correo: string;
-
-    @IsString()
-    readonly status: string;
 }

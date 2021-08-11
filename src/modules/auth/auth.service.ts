@@ -44,7 +44,7 @@ export class AuthService {
             apellido: usuario.apellido,
             telefono: usuario.telefono,
             correo: usuario.correo,
-            status: usuario.correo,
+            status: usuario.status,
             roles: usuario.roles.map(r => r.rol as RoleType)
         }
 

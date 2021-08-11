@@ -26,5 +26,5 @@ export class ReadUseruarioDto {
 
     @Expose()
     @IsEmail()
-    readonly email: string;
+    readonly correo: string;
 }

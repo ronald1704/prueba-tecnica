@@ -17,7 +17,7 @@ export class UpdateVehiculoDto {
     readonly detalle: string;
 
     @IsString()
-    readonly imagen: string;
+    imagen: string;
 
     @IsNumber()
     readonly valor: number;

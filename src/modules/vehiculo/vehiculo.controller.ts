@@ -1,4 +1,7 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, StreamableFile, UploadedFile, UploadedFiles, UseInterceptors } from "@nestjs/common";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
+import { createReadStream, fstat } from "fs";
+import { diskStorage } from "multer";
 import { CreateVehiculoDto } from "./dto/create-vehiculo";
 import { ReadVehiculoDto } from "./dto/read-vehiculo";
 import { UpdateVehiculoDto } from "./dto/update-vehiculo.dto";
@@ -19,12 +22,49 @@ export class VehiculoController {
     }
 
     @Post("create")
-    create(@Body() vehiculo: Partial<CreateVehiculoDto>): Promise<ReadVehiculoDto> {
+    @UseInterceptors(
+        FileInterceptor('imagen', {
+            storage: diskStorage({
+                destination: './upload',
+                filename: (req, file, cd) => {
+                    cd(null, file.originalname);
+                },
+            }),
+        }),
+    )
+    create(@Body() vehiculo: Partial<CreateVehiculoDto>, @UploadedFile() imagen: Express.Multer.File): Promise<ReadVehiculoDto> {
+        vehiculo.imagen = imagen.originalname;
         return this._vehiculoService.create(vehiculo);
     }
 
+    @Post("createexcel")
+    @UseInterceptors(
+        FileInterceptor('archivo', {
+            storage: diskStorage({
+                destination: './files',
+                filename: (req, file, cd) => {
+                    cd(null, file.originalname);
+                },
+            }),
+        }),
+    )
+    createWhithExcel(@UploadedFile() file: Express.Multer.File) {
+        return this._vehiculoService.createWhithExcel(file.originalname);
+    }
+
     @Patch(":idVehiculo")
-    update(@Param("IdVehiculo", ParseIntPipe) idVehiculo: number, @Body() vehiculo: Partial<UpdateVehiculoDto>): Promise<ReadVehiculoDto> {
+    @UseInterceptors(
+        FileInterceptor('imagen', {
+            storage: diskStorage({
+                destination: './upload',
+                filename: (req, file, cd) => {
+                    cd(null, file.originalname);
+                },
+            }),
+        }),
+    )
+    update(@Param("IdVehiculo", ParseIntPipe) idVehiculo: number, @Body() vehiculo: Partial<UpdateVehiculoDto>, @UploadedFile() imagen: Express.Multer.File): Promise<ReadVehiculoDto> {
+        vehiculo.imagen = imagen.originalname;
         return this._vehiculoService.update(idVehiculo, vehiculo);
     }
 

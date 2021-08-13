@@ -1,20 +1,20 @@
 import { IsDate, IsNumber, IsString } from "class-validator";
 
-export class CreateVehiculoDto {
+export class CreateVehiculoExcelDto {
     @IsString()
-    readonly placa: string;
+    placa: string;
 
     @IsString()
-    readonly marca: string;
+    marca: string;
 
     @IsString()
-    readonly modelo: string;
+    modelo: string;
 
     @IsString()
-    readonly color: string;
+    color: string;
 
     @IsString()
-    readonly detalle: string;
+    detalle: string;
 
     @IsString()
     imagen: string;
@@ -23,5 +23,8 @@ export class CreateVehiculoDto {
     valor: number;
 
     @IsDate()
-    readonly fechaCreacion: Date;
+    fechaCreacion: Date;
+
+    @IsDate()
+    fechaActualizacion: Date;
 }

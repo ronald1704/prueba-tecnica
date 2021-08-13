@@ -11,8 +11,8 @@ export class ConfigService {
         const isDevelopmentEnv = process.env.NODE_ENV !== "production";
 
         if (isDevelopmentEnv) {
-            const envFilePath = __dirname + "/../../.env"
-            //join(__dirname, "/../../../.env");
+            const envFilePath = //__dirname + "/../../.env"
+                join(__dirname, "/../../../.env");
             const existPath = fs.existsSync(envFilePath);
 
             if (!existPath) {

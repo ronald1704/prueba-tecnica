@@ -11,10 +11,10 @@ export class RolGuard implements CanActivate {
         }
 
         const request = context.switchToHttp().getRequest();
-        const { usuario } = request;
+        const { user } = request;
 
-        const hashRol = () => usuario.roles.some((rol: string) => roles.includes(rol));
+        const hashRol = () => user.roles.some((rol: string) => roles.includes(rol));
 
-        return usuario && usuario.roles && hashRol();
+        return user && user.roles && hashRol();
     }
 }

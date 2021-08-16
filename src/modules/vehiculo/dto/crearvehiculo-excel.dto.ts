@@ -19,6 +19,9 @@ export class CreateVehiculoExcelDto {
     @IsString()
     imagen: string;
 
+    @IsString()
+    status: string;
+
     @IsNumber()
     valor: number;
 

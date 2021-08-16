@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsNumberString, IsString } from "class-validator";
 
 export class UpdateVehiculoDto {
     @IsString()
@@ -19,6 +19,9 @@ export class UpdateVehiculoDto {
     @IsString()
     imagen: string;
 
+    @IsString()
+    readonly status: string;
+
     @IsNumber()
-    readonly valor: number;
+    valor: number;
 }
